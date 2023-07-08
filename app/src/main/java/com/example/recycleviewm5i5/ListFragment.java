@@ -4,11 +4,15 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.recycleviewm5i5.databinding.FragmentListBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,7 +21,7 @@ import com.example.recycleviewm5i5.databinding.FragmentListBinding;
  */
 public class ListFragment extends Fragment {
 
-    private FragmentListBinding binding;
+    //private FragmentListBinding binding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,12 +64,22 @@ public class ListFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentListBinding.inflate(getLayoutInflater(), container, false);
-
-        // Inflate the layout for this fragment
+        FragmentListBinding binding = FragmentListBinding.inflate(getActivity().getLayoutInflater());
+        //binding = FragmentListBinding.inflate(getLayoutInflater(), container, false);
+        AdapterWords adapter = new AdapterWords();
+        adapter.setData(getData());
+        binding.recyclerViewlist.setAdapter(adapter);
         return binding.getRoot();
+    }
+
+    private List<String> getData() {
+        List<String> data = new ArrayList<>();
+        for (int i = 0;i<20;i++) {
+            data.add("Data" + i);
+        }
+        Log.e("","Hola");
+        return data;
     }
 }

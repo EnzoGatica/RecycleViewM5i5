@@ -1,5 +1,6 @@
 package com.example.recycleviewm5i5;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,10 @@ public class AdapterWords extends RecyclerView.Adapter<AdapterWords.ViewHolder> 
         return words.size();
     }
 
+    public void setData(List<String> data) {
+        this.words = data;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ItemBinding itembinding;
         public ViewHolder(@NonNull ItemBinding binding) {
@@ -41,7 +46,9 @@ public class AdapterWords extends RecyclerView.Adapter<AdapterWords.ViewHolder> 
             itembinding = binding;
         }
 
-        public void mostrarInformacion(String words){
+        public void mostrarInformacion(String words)
+        {
+
             itembinding.textView.setText(words);
         }
     }
